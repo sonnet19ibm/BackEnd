@@ -17,6 +17,9 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private CustomerService cservice;
 	
+	@Autowired
+	private AddressService aservice;
+	
 	@Override
 	public void addOrder(Order order) {
 		repo.save(order);
@@ -33,10 +36,16 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public Order updateOrder(Order order, Long id) {
+	public Order updateOrder(Order order, Long id, Long aid) {
 		order.setCustomer(cservice.getCustomer(id));
+		order.setShippingAddress(aservice.getAddress(aid));
 		return repo.save(order);
 		
+	}
+
+	@Override
+	public Order getOrderId(Long id) {
+		return repo.getById(id);
 	}
 
 }

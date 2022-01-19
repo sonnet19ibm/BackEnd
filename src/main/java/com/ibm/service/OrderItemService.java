@@ -9,6 +9,8 @@ public interface OrderItemService {
    
    void deleteOrderItem(Long id);
    
+   Long updateOrderItem(OrderItem orderitem, Long id);
+   
    List<OrderItem> getOrderItems();
    
 }

@@ -12,45 +12,48 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="order_item")
+@Table(name = "order_item")
 
 public class OrderItem {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Long id;
 
-    @Column(name="unit_price")
-    private BigDecimal unitPrice;
+	@Column(name = "unit_price")
+	private BigDecimal unitPrice;
 
-    @Column(name="quantity")
-    private int quantity;
+	@Column(name = "quantity")
+	private int quantity;
 
-    @Column(name="product_id")
-    private Long productId;
+	@Column(name = "product_id")
+	private Long productId;
 
+	@Column(name = "sonnetRegisteredId")
+	private Long sonnetRegisteredId;
 
-    @ManyToOne
-    @JoinColumn(name="order_id")
-    private Order order;
-    
-    //Default Constructor
-    public OrderItem() {
-    	super();
-    }
-    
-    //Constructor using fields
-    public OrderItem(Long id, BigDecimal unitPrice, int quantity, Long productId, Order order) {
+	@ManyToOne
+	@JoinColumn(name = "order_id")
+	private Order order;
+
+	// Default Constructor
+	public OrderItem() {
+		super();
+	}
+
+	// Constructor using fields
+	public OrderItem(Long id, BigDecimal unitPrice, int quantity, Long productId, Long sonnetRegisteredId,
+			Order order) {
 		super();
 		this.id = id;
 		this.unitPrice = unitPrice;
 		this.quantity = quantity;
 		this.productId = productId;
+		this.sonnetRegisteredId = sonnetRegisteredId;
 		this.order = order;
 	}
 
-	//Getters and Setters
 	public Long getId() {
 		return id;
 	}
@@ -83,6 +86,14 @@ public class OrderItem {
 		this.productId = productId;
 	}
 
+	public Long getSonnetRegisteredId() {
+		return sonnetRegisteredId;
+	}
+
+	public void setSonnetRegisteredId(Long sonnetRegisteredId) {
+		this.sonnetRegisteredId = sonnetRegisteredId;
+	}
+
 	public Order getOrder() {
 		return order;
 	}
@@ -90,6 +101,5 @@ public class OrderItem {
 	public void setOrder(Order order) {
 		this.order = order;
 	}
-    
-    
+
 }

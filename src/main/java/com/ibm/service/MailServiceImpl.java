@@ -27,7 +27,7 @@ public class MailServiceImpl implements MailService {
 	    String toAddress = order.getEmailId();
 	    String fromAddress = "sonnet19ibm@gmail.com";
 	    String subject = "Your Order is confirmed!";
-	    String content = "Dear Customer,"+System.lineSeparator()+"Your order has been confirmed.Keep shopping!"+System.lineSeparator()+"Thank you!"+System.lineSeparator()+"Sonnet 19 Team";
+	    String content = "Dear Customer,"+System.lineSeparator()+"Your order has been confirmed and your payment is received. Keep shopping!"+System.lineSeparator()+"Thank you!"+System.lineSeparator()+"Sonnet 19 Team";
 		MimeMessage orderMessage = mailSender.createMimeMessage();
 		 
         try {
@@ -55,7 +55,8 @@ public class MailServiceImpl implements MailService {
 	    String fromAddress = "sonnet19ibm@gmail.com";
 	    String subject = "Welcome to Sonnet19! Let's start Shopping!.";
 	    String content = "Dear Customer,"+System.lineSeparator()+"You have been successfully registered. Start shopping with the latest"
-	    		+ " ranges of products."+System.lineSeparator()+"Happy Shopping!"+System.lineSeparator()+"Team Sonnet 19";
+	    		+ " ranges of products."+System.lineSeparator()+"Your Sonnet-Registered-ID is "+customer.getId()+System.lineSeparator()+
+	    		". Please enter this ID when required and store it for future references.\n "+"Happy Shopping!"+System.lineSeparator()+"Team Sonnet 19";
 		MimeMessage regMessage = mailSender.createMimeMessage();
 		 
         try {

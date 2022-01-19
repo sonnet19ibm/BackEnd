@@ -10,59 +10,62 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="address")
+@Table(name = "address")
 public class Address {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    private Long id;
-    
-    @Column(name="street")
-    private String street;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "aid")
+	private Long aid;
 
-    @Column(name="city")
-    private String city;
+	@Column(name = "street")
+	private String street;
 
-    @Column(name="state")
-    private String state;
+	@Column(name = "city")
+	private String city;
 
-    @Column(name="country")
-    private String country;
+	@Column(name = "state")
+	private String state;
 
-    @Column(name="pin_code")
-    private String pinCode;
-    
-    @OneToOne
-    @PrimaryKeyJoinColumn
-    private Order order;
+	@Column(name = "country")
+	private String country;
 
-    //Default Constructor
-    public Address() {
-    	super();
-    }
+	@Column(name = "pin_code")
+	private String pinCode;
 
-  //Constructor using fields
-	public Address(Long id, String street, String city, String state, String country, String pinCode,
-			Order order) {
+	@Column(name = "sonnetRegisteredId")
+	private Long sonnetRegisteredId;
+
+	@OneToOne
+	@PrimaryKeyJoinColumn
+	private Order order;
+
+	// Default Constructor
+	public Address() {
 		super();
-		this.id = id;
+	}
+
+	// Constructor using fields
+
+	public Address(Long aid, String street, String city, String state, String country, String pinCode,
+			Long sonnetRegisteredId, Order order) {
+		super();
+		this.aid = aid;
 		this.street = street;
 		this.city = city;
 		this.state = state;
 		this.country = country;
 		this.pinCode = pinCode;
+		this.sonnetRegisteredId = sonnetRegisteredId;
 		this.order = order;
 	}
 
-
-	//Getters and Setters
-	public Long getId() {
-		return id;
+	public Long getaId() {
+		return aid;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setaId(Long aid) {
+		this.aid = aid;
 	}
 
 	public String getStreet() {
@@ -105,6 +108,14 @@ public class Address {
 		this.pinCode = pinCode;
 	}
 
+	public Long getSonnetRegisteredId() {
+		return sonnetRegisteredId;
+	}
+
+	public void setSonnetRegisteredId(Long sonnetRegisteredId) {
+		this.sonnetRegisteredId = sonnetRegisteredId;
+	}
+
 	public Order getOrder() {
 		return order;
 	}
@@ -112,6 +123,5 @@ public class Address {
 	public void setOrder(Order order) {
 		this.order = order;
 	}
-    
+
 }
-	

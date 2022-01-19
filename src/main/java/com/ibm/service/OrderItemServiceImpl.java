@@ -14,6 +14,9 @@ public class OrderItemServiceImpl implements OrderItemService {
 	@Autowired
 	private OrderItemRepository repo;
 	
+	@Autowired
+	private OrderService oservice;
+	
 	@Override
 	public void addOrderItem(OrderItem orderitem) {
 		repo.save(orderitem);
@@ -27,6 +30,13 @@ public class OrderItemServiceImpl implements OrderItemService {
 	@Override
 	public List<OrderItem> getOrderItems() {
 		return repo.findAll();
+	}
+
+	@Override
+	public Long updateOrderItem(OrderItem orderitem, Long id) {
+		orderitem.setOrder(oservice.getOrderId(id));
+		repo.save(orderitem);
+		return null;
 	}
 
 }

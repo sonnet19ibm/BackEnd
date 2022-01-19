@@ -20,8 +20,8 @@ public class AddressServiceImpl implements AddressService {
 	}
 
 	@Override
-	public void deleteAddress(Long id) {
-		repo.deleteById(id);
+	public void deleteAddress(Long aid) {
+		repo.deleteById(aid);
 	}
 
 	@Override
@@ -32,6 +32,11 @@ public class AddressServiceImpl implements AddressService {
 	@Override
 	public List<Address> getaddresses() {
 		return repo.findAll();
+	}
+
+	@Override
+	public Address getAddress(Long aid) {
+		return repo.getById(aid);
 	}
 
 }

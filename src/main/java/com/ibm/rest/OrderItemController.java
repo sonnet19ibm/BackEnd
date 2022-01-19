@@ -27,6 +27,13 @@ public class OrderItemController {
 		service.addOrderItem(orderitem);
 	}
 	
+	@PostMapping(value="/updateorderitem/{id}", consumes = "application/json")
+	void updateOrderItem(@RequestBody OrderItem orderitem, @PathVariable Long id)
+	{
+		service.updateOrderItem(orderitem, id);
+		
+	}
+	
 	@DeleteMapping(value = "/orderitem/{id}")
 	public void deleteOrderItem(@PathVariable("id") Long id) {
 		service.deleteOrderItem(id);
