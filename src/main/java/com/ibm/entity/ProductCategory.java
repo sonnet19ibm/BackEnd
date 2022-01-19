@@ -1,6 +1,7 @@
 package com.ibm.entity;
 
-import java.util.Set;
+import java.util.List;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,7 +16,8 @@ import javax.persistence.Table;
 @Table(name="product_category")
 public class ProductCategory {
 
-    @Id
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")
     private Long id;
@@ -24,7 +26,7 @@ public class ProductCategory {
     private String categoryName;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
-    private Set<Product> products;
+    private List<Product> products;
     
     //Default constructor
     public ProductCategory() {
@@ -32,7 +34,7 @@ public class ProductCategory {
     }
     
     //Constructor using fields
-    public ProductCategory(Long id, String categoryName, Set<Product> products) {
+    public ProductCategory(Long id, String categoryName, List<Product> products) {
 		super();
 		this.id = id;
 		this.categoryName = categoryName;
@@ -56,11 +58,11 @@ public class ProductCategory {
 		this.categoryName = categoryName;
 	}
 
-	public Set<Product> getProducts() {
+	public List<Product> getProducts() {
 		return products;
 	}
 
-	public void setProducts(Set<Product> products) {
+	public void setProducts(List<Product> products) {
 		this.products = products;
 	}
     

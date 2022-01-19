@@ -13,14 +13,21 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 	private ProductCategoryRepository repo;
 	
 	@Override
-	public void addProductCategory(ProductCategory productcategory) {
+	public Long addProductCategory(ProductCategory productcategory) {
 		repo.save(productcategory);
+		return productcategory.getId();
 	}
 
 	@Override
 	public void deleteProductCategory(Long id) {
 		repo.deleteById(id);
 
+	}
+
+	@Override
+	public ProductCategory getProductCategory(Long id) {
+		return repo.getById(id);
+		
 	}
 
 }

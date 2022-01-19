@@ -14,13 +14,19 @@ public class CustomerServiceImpl implements CustomerService {
 	private CustomerRepository repo;
 	
 	@Override
-	public void addCustomer(Customer customer) {
+	public Long addCustomer(Customer customer) {
 		repo.save(customer);
+		return customer.getId();
 	}
 
 	@Override
 	public Customer authenticateCustomer(Login login) {
 		return repo.authCustomer(login.getEmailId(), login.getPassword()).orElseThrow(()->new IllegalArgumentException("invalid emailid or password"));
+	}
+
+	@Override
+	public Customer getCustomer(Long id) {
+		return repo.getById(id);
 	}
 
 }

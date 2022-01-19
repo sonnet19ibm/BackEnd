@@ -1,5 +1,7 @@
 package com.ibm.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,11 @@ public class AddressServiceImpl implements AddressService {
 	@Override
 	public void updateAddress(Address address) {
 		repo.save(address);
+	}
+
+	@Override
+	public List<Address> getaddresses() {
+		return repo.findAll();
 	}
 
 }

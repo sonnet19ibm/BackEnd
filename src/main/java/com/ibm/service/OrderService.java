@@ -10,6 +10,8 @@ public interface OrderService {
 	
 	void deleteOrder(Long id);
 	
+	Order updateOrder(Order order, Long id);
+	
 	List<Order> getOrders();
 	
 }

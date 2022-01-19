@@ -22,10 +22,10 @@ public class ProductController {
 	@Autowired
 	private ProductService service;
 	
-	@PostMapping(value = "/product", consumes = "application/json")
-	void addProduct(@RequestBody Product product)
+	@PostMapping(value = "/product/{id}", consumes = "application/json")
+	void addProduct(@RequestBody Product product, @PathVariable Long id)
 	{
-		service.addProduct(product);
+		service.addProduct(product, id);
 	}
 	
 	@DeleteMapping(value = "/product/{id}")

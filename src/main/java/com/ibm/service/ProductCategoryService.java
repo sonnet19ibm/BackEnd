@@ -3,7 +3,9 @@ package com.ibm.service;
 import com.ibm.entity.ProductCategory;
 
 public interface ProductCategoryService {
-	void addProductCategory(ProductCategory productcategory);
+	Long addProductCategory(ProductCategory productcategory);
+	
+	ProductCategory getProductCategory(Long id);
 
 	void deleteProductCategory(Long id);
 }

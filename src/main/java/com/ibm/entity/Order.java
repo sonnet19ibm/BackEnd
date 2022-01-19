@@ -51,9 +51,6 @@ public class Order {
     @JoinColumn(name="shipping_address_id", referencedColumnName = "id")
     private Address shippingAddress;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="billing_address_id", referencedColumnName = "id")
-    private Address billingAddress;
 
     //Default Constructor
     public Order() {	
@@ -62,8 +59,7 @@ public class Order {
     
     //Constructor using fields
     public Order(Long id, String orderTrackingNumber, int totalQuantity, BigDecimal totalPrice, String status,
-			String emailId, Set<OrderItem> orderItems, Customer customer, Address shippingAddress,
-			Address billingAddress) {
+			String emailId, Set<OrderItem> orderItems, Customer customer, Address shippingAddress) {
 		super();
 		this.id = id;
 		this.orderTrackingNumber = orderTrackingNumber;
@@ -74,7 +70,6 @@ public class Order {
 		this.orderItems = orderItems;
 		this.customer = customer;
 		this.shippingAddress = shippingAddress;
-		this.billingAddress = billingAddress;
 	}
 
 
@@ -150,14 +145,6 @@ public class Order {
 
 	public void setShippingAddress(Address shippingAddress) {
 		this.shippingAddress = shippingAddress;
-	}
-
-	public Address getBillingAddress() {
-		return billingAddress;
-	}
-
-	public void setBillingAddress(Address billingAddress) {
-		this.billingAddress = billingAddress;
 	}
 
 	public void add(OrderItem item){

@@ -1,7 +1,7 @@
 package com.ibm.entity;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -26,6 +26,9 @@ public class Customer {
 
 	@Column(name = "last_name")
 	private String lastName;
+	
+	@Column(name="mobile")
+    private int mobileNo;
 
 	@Column(name = "email")
 	private String emailId;
@@ -34,25 +37,28 @@ public class Customer {
 	private String password;
 
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-	private Set<Order> orders = new HashSet<>();
+	private List<Order> orders = new ArrayList<>();
 
-//Default constructor
+    //Default constructor
 	public Customer() {
 		super();
 	}
 
-//Constructor using fields
-	public Customer(Long id, String firstName, String lastName, String emailId, String password, Set<Order> orders) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.emailId = emailId;
-		this.password = password;
-		this.orders = orders;
-	}
+	//Constructor using fields
+	public Customer(Long id, String firstName, String lastName, int mobileNo, String emailId, String password,
+		List<Order> orders) {
+	super();
+	this.id = id;
+	this.firstName = firstName;
+	this.lastName = lastName;
+	this.mobileNo = mobileNo;
+	this.emailId = emailId;
+	this.password = password;
+	this.orders = orders;
+    }
 
-//Getters and Setters
+    //Getters and Setters
+
 	public Long getId() {
 		return id;
 	}
@@ -77,20 +83,20 @@ public class Customer {
 		this.lastName = lastName;
 	}
 
+	public int getMobileNo() {
+		return mobileNo;
+	}
+
+	public void setMobileNo(int mobileNo) {
+		this.mobileNo = mobileNo;
+	}
+
 	public String getEmailId() {
 		return emailId;
 	}
 
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
-	}
-
-	public Set<Order> getOrders() {
-		return orders;
-	}
-
-	public void setOrders(Set<Order> orders) {
-		this.orders = orders;
 	}
 
 	public String getPassword() {
@@ -101,10 +107,18 @@ public class Customer {
 		this.password = password;
 	}
 
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+
 	public void add(Order order) {
 		if (order != null) {
 			if (orders == null) {
-				orders = new HashSet<>();
+				orders = new ArrayList<>();
 			}
 			orders.add(order);
 			order.setCustomer(this);

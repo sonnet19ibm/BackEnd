@@ -14,9 +14,15 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductRepository repo;
 	
+	@Autowired
+	private ProductCategoryService prservice;
+	
 	@Override
-	public void addProduct(Product product) {
+	public Long addProduct(Product product, Long id) {
+		product.setCategory(prservice.getProductCategory(id));
 		repo.save(product);
+		return product.getId();
+		
 	}
 
 	@Override

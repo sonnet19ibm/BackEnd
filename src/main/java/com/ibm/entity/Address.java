@@ -17,7 +17,7 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Long id;
-
+    
     @Column(name="street")
     private String street;
 
@@ -30,9 +30,9 @@ public class Address {
     @Column(name="country")
     private String country;
 
-    @Column(name="zip_code")
-    private String zipCode;
-
+    @Column(name="pin_code")
+    private String pinCode;
+    
     @OneToOne
     @PrimaryKeyJoinColumn
     private Order order;
@@ -42,15 +42,16 @@ public class Address {
     	super();
     }
 
-    //Constructor using fields
-    public Address(Long id, String street, String city, String state, String country, String zipCode, Order order) {
+  //Constructor using fields
+	public Address(Long id, String street, String city, String state, String country, String pinCode,
+			Order order) {
 		super();
 		this.id = id;
 		this.street = street;
 		this.city = city;
 		this.state = state;
 		this.country = country;
-		this.zipCode = zipCode;
+		this.pinCode = pinCode;
 		this.order = order;
 	}
 
@@ -96,12 +97,12 @@ public class Address {
 		this.country = country;
 	}
 
-	public String getZipCode() {
-		return zipCode;
+	public String getPinCode() {
+		return pinCode;
 	}
 
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
+	public void setPinCode(String pinCode) {
+		this.pinCode = pinCode;
 	}
 
 	public Order getOrder() {
@@ -111,7 +112,6 @@ public class Address {
 	public void setOrder(Order order) {
 		this.order = order;
 	}
-
-    
     
 }
+	

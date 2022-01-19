@@ -1,5 +1,7 @@
 package com.ibm.service;
 
+import java.util.List;
+
 import com.ibm.entity.Address;
 
 public interface AddressService {
@@ -10,4 +12,6 @@ public interface AddressService {
 
 	void updateAddress(Address address);
 
+	List <Address> getaddresses();
+	
 }

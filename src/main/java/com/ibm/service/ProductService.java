@@ -6,13 +6,15 @@ import com.ibm.entity.Product;
 
 public interface ProductService {
 
-	void addProduct(Product product);
+	Long addProduct(Product product, Long id);
 	
 	void deleteProduct(Long id);
 	
 	void updateProduct(Product product);
 	
 	List<Product> getProducts();
+
+	
 	
 	
 }
