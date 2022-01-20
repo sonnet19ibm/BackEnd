@@ -11,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 /**
  * This Entity is for OrderItem
  * 
@@ -42,6 +45,7 @@ public class OrderItem {
 	@Column(name = "sonnetRegisteredId")
 	private Long sonnetRegisteredId;
 
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "order_id")
 	private Order order;

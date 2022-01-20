@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
  
 /**
  * This Entity is for Customer's address
@@ -45,6 +47,7 @@ public class Address {
 	@Column(name = "sonnetRegisteredId")
 	private Long sonnetRegisteredId;
 
+	@JsonBackReference
 	@OneToOne
 	@PrimaryKeyJoinColumn
 	private Order order;

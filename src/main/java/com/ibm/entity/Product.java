@@ -38,8 +38,6 @@ public class Product {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "description")
-    private String description;
 
     @Column(name = "unit_price")
     private BigDecimal unitPrice;
@@ -56,14 +54,13 @@ public class Product {
     }
     
     //Constructor using fields
-    public Product(Long id, ProductCategory category, String name, String description,
+    public Product(Long id, ProductCategory category, String name,
 			BigDecimal unitPrice, boolean active, int unitsInStock, Date dateCreated,
 			Date lastUpdated) {
 		super();
 		this.id = id;
 		this.category = category;
 		this.name = name;
-		this.description = description;
 		this.unitPrice = unitPrice;
 		this.active = active;
 		this.unitsInStock = unitsInStock;
@@ -94,13 +91,6 @@ public class Product {
 			this.name = name;
 		}
 
-		public String getDescription() {
-			return description;
-		}
-
-		public void setDescription(String description) {
-			this.description = description;
-		}
 
 		public BigDecimal getUnitPrice() {
 			return unitPrice;

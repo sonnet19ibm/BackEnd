@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 /**
  * This Entity is for Customer Registration
  * 
@@ -45,6 +47,7 @@ public class Customer {
 	@Column(name = "password")
 	private String password;
 
+	@JsonManagedReference
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
 	private List<Order> orders = new ArrayList<>();
 

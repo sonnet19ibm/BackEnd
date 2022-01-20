@@ -16,6 +16,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 /**
  * This Entity is for Order
  * 
@@ -49,13 +52,16 @@ public class Order {
     @Column(name="emailId")
     private String emailId;
     
+    @JsonManagedReference
     @OneToMany(cascade= CascadeType.ALL, mappedBy = "order")
     private Set<OrderItem> orderItems= new HashSet<>();
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name="customer_id")
     private Customer customer;
 
+    @JsonManagedReference
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="shipping_address_id", referencedColumnName = "aid")
     private Address shippingAddress;
